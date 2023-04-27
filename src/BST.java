@@ -7,14 +7,9 @@
  */
 public class BST<T> extends BT<T> {
 
-    BTNode<T> root;
-
-
-
     BST() {
         root = null;
     }
-
     void insert(T info) {
 
         if (root == null) {
@@ -32,7 +27,6 @@ public class BST<T> extends BT<T> {
             else
                 n = n.right;
             level++;
-
         }
 
         if (((Comparable)info).compareTo(p.info) < 0) {
@@ -42,8 +36,8 @@ public class BST<T> extends BT<T> {
             p.right = new BTNode<>(info);
             p.right.level = level;
         }
-
-
+        if(level>height)
+            height = level;
     }
 
 
@@ -54,7 +48,8 @@ public class BST<T> extends BT<T> {
         {
             if(key == n.info)
                 return n;
-            else{
+            else
+            {
                 if(((Comparable)key).compareTo(n.info)<0)
                     n = n.left;
                 else
@@ -63,4 +58,6 @@ public class BST<T> extends BT<T> {
         }
         return null;
     }
+
+
 }

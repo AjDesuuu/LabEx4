@@ -26,10 +26,10 @@ class BTNode<T> {
     }
 
     public String toString() {
-        if (info == null)
+        if (info == null) //if info is null then the node is empty
             return "";
-        String s = "K=" + info;
-        if (left != null || right != null) {
+        String s = "K=" + info; // else k (the node) contains the info
+        if (left != null || right != null) { //if node has a child
             if (left != null) {
                 s += " ";
                 s = s + "L=" + left+ ""; // I think the toString is unnecessary
@@ -38,6 +38,23 @@ class BTNode<T> {
                 s += " ";
                 s = s + "R=" + right + "";
             }
+        }
+        return s;
+    }
+
+    public String toString(BTNode<T> n) {
+        String s = "";
+        if (n != null) {
+            s = "[K=" + n.info;
+
+            if (n.left != null)
+                s = s + " L=" + toString(n.left)+"]";
+
+            if (n.right != null)
+                s = s + " R=" + toString(n.right);
+            else
+                s= s + "]"; //Added this condition, since the result always lacks the last ']'\
+            //nvm it doesn't function properly for t2 T~T
         }
         return s;
     }
